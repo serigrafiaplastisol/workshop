@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
 export const LeadForm = () => {
@@ -10,13 +10,47 @@ export const LeadForm = () => {
   });
   
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [isSoldOut, setIsSoldOut] = useState(false);
+  const [isLoadingCount, setIsLoadingCount] = useState(true);
+
+  useEffect(() => {
+    const checkAvailability = async () => {
+      try {
+        const { count, error } = await supabase
+          .from('leads')
+          .select('*', { count: 'exact', head: true });
+          
+        if (error) throw error;
+        
+        if (count >= 20) {
+          setIsSoldOut(true);
+        }
+      } catch (err) {
+        console.error('Erro ao buscar contagem de leads:', err);
+      } finally {
+        setIsLoadingCount(false);
+      }
+    };
+    checkAvailability();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
 
     try {
-      const { data, error } = await supabase
+      // Dupla checagem: evita race conditions se 2 pessoas abrirem o site na msm hora
+      const { count } = await supabase
+        .from('leads')
+        .select('*', { count: 'exact', head: true });
+        
+      if (count >= 20) {
+        setIsSoldOut(true);
+        setStatus('idle');
+        return;
+      }
+
+      const { error } = await supabase
         .from('leads')
         .insert([
           {
@@ -50,6 +84,28 @@ export const LeadForm = () => {
     outline: 'none',
     transition: 'border-color 0.3s'
   };
+
+  if (isLoadingCount) {
+    return (
+      <div style={{ background: '#2B2F36', borderRadius: '16px', padding: '3rem 2rem', width: '100%', boxShadow: '0 10px 30px rgba(0,0,0,0.5)', textAlign: 'center', opacity: 0.5 }}>
+        <p style={{ color: '#00F2FE', fontSize: '1.2rem', fontWeight: 'bold', animation: 'pulse 1.5s infinite' }}>Verificando vagas disponíveis...</p>
+      </div>
+    );
+  }
+
+  if (isSoldOut) {
+    return (
+      <div style={{ background: 'linear-gradient(145deg, #1f1b24 0%, #151010 100%)', borderRadius: '16px', padding: '3.5rem 2rem', width: '100%', boxShadow: '0 10px 30px rgba(0,0,0,0.7)', textAlign: 'center', border: '1px solid rgba(239, 68, 68, 0.15)' }}>
+        <div style={{ fontSize: '3.5rem', marginBottom: '1.5rem', filter: 'drop-shadow(0 0 15px rgba(239,68,68,0.4))' }}>❌</div>
+        <h3 style={{ fontSize: '1.8rem', color: '#ef4444', fontWeight: '900', marginBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>
+          Vagas Esgotadas!
+        </h3>
+        <p style={{ color: '#9CA3AF', lineHeight: '1.7', fontSize: '1.05rem' }}>
+          O limite máximo de <strong style={{color:'#fff'}}>20 participantes</strong> foi atingido e as inscrições para esta edição estão oficialmente encerradas.
+        </p>
+      </div>
+    );
+  }
 
   if (status === 'success') {
     return (
