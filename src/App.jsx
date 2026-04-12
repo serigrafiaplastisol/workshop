@@ -165,7 +165,7 @@ function App() {
             <AnimatedSection direction="right" delay={0.1}>
               <div className="glass-card" style={{ height: '100%', borderTop: '4px solid var(--color-neon-green)', background: 'linear-gradient(180deg, rgba(57, 255, 20, 0.05) 0%, rgba(22, 26, 37, 0.4) 100%)' }}>
                 <div style={{ width: '100%', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(57, 255, 20, 0.2)', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
-                  <video src="/sabino_1.mp4" controls style={{ width: '100%', display: 'block', objectFit: 'cover' }}></video>
+                  <img src="/sabino_1.jpg" alt="Antônio Sabino" style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
                 </div>
                 <h3 style={{ marginBottom: '1.5rem', fontSize: '1.6rem', color: 'var(--color-text-main)' }}>Antônio Sabino</h3>
                 <p style={{ color: '#cbd5e1', lineHeight: '1.7', fontSize: '1.05rem' }}>
@@ -177,7 +177,7 @@ function App() {
             <AnimatedSection direction="left" delay={0.2}>
               <div className="glass-card" style={{ height: '100%', borderTop: '4px solid var(--color-turquoise)', background: 'linear-gradient(180deg, rgba(0, 242, 254, 0.05) 0%, rgba(22, 26, 37, 0.4) 100%)' }}>
                 <div style={{ width: '100%', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(0, 242, 254, 0.2)', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
-                  <video src="/delson_1.mp4" controls style={{ width: '100%', display: 'block', objectFit: 'cover' }}></video>
+                  <img src="/delson_1.jpg" alt="Delson Sabino" style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
                 </div>
                 <h3 style={{ marginBottom: '1.5rem', fontSize: '1.6rem', color: 'var(--color-text-main)' }}>Delson Sabino</h3>
                 <p style={{ color: '#cbd5e1', lineHeight: '1.7', fontSize: '1.05rem' }}>
