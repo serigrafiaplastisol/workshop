@@ -12,6 +12,7 @@ export const LeadForm = () => {
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [isSoldOut, setIsSoldOut] = useState(false);
   const [isLoadingCount, setIsLoadingCount] = useState(true);
+  const [validationError, setValidationError] = useState('');
 
   useEffect(() => {
     const checkAvailability = async () => {
@@ -36,6 +37,15 @@ export const LeadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setValidationError('');
+    
+    // Validação rígida: todos os campos devem estar marcados 
+    // (os inputs de texto já têm o atributo html 'required', mas precisamos checar os botões)
+    if (!formData.knowsInstitute) {
+      setValidationError('Por favor, nos informe se você já conhece o Instituto Profissional Criativo.');
+      return;
+    }
+    
     setStatus('loading');
 
     try {
@@ -57,7 +67,7 @@ export const LeadForm = () => {
             first_name: formData.firstName,
             email: formData.email,
             phone: formData.phone,
-            knows_institute: formData.knowsInstitute || 'nao_respondeu',
+            knows_institute: formData.knowsInstitute,
           }
         ]);
 
@@ -127,9 +137,15 @@ export const LeadForm = () => {
         Garantir minha vaga agora
       </h3>
       
+      {validationError && (
+        <div style={{ padding: '0.8rem', background: 'rgba(239, 160, 68, 0.1)', border: '1px solid #eba234', color: '#eba234', borderRadius: '8px', marginBottom: '1.5rem', textAlign: 'center', fontSize: '0.9rem' }}>
+          ⚠️ {validationError}
+        </div>
+      )}
+
       {status === 'error' && (
         <div style={{ padding: '1rem', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem' }}>
-          Ocorreu um erro ao reservar a vaga. Tente novamente.
+          Ocorreu um erro técnico ao reservar a vaga. Tente novamente.
         </div>
       )}
 
