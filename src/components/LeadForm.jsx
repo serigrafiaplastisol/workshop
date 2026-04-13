@@ -123,7 +123,7 @@ export const LeadForm = () => {
 
   return (
     <div style={{ background: '#2B2F36', borderRadius: '16px', padding: '2.5rem 2rem', width: '100%', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
-      <h3 style={{ marginBottom: '2rem', textAlign: 'center', fontSize: '1.6rem', color: '#00F2FE', fontWeight: 'bold' }}>
+      <h3 style={{ marginBottom: '2rem', textAlign: 'center', fontSize: 'clamp(1.25rem, 5vw, 1.6rem)', color: '#00F2FE', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
         Garantir minha vaga agora
       </h3>
       
