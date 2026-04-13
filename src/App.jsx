@@ -169,7 +169,7 @@ function App() {
                 </div>
                 <h3 style={{ marginBottom: '1.5rem', fontSize: '1.6rem', color: 'var(--color-text-main)' }}>Antônio Sabino</h3>
                 <p style={{ color: '#cbd5e1', lineHeight: '1.7', fontSize: '1.05rem' }}>
-                  É profissional de serigrafia há <strong>mais de 15 anos</strong>, com uma trajetória sólida dentro do mercado. Já atuou como serígrafo na empresa BlueShark, onde desenvolveu experiência em produção com padrão industrial e alta demanda. Hoje, é empresário no segmento de serigrafia terceirizada, atendendo grandes marcas e entregando qualidade em escala — dominando na prática aquilo que muitos ainda tentam aprender.
+                  Atua como profissional de serigrafia há <strong>mais de 21 anos</strong>, com uma trajetória sólida dentro do mercado. Já atuou como serígrafo nas empresas Advento estamparia, Unifardas, Ramik e BlueShark, onde desenvolveu experiência em produção com padrão industrial e alta demanda. Hoje, é microempreendedor no segmento de serigrafia terceirizada, atendendo grandes marcas e entregando qualidade em escala — dominando na prática aquilo que muitos ainda tentam aprender.
                 </p>
               </div>
             </AnimatedSection>
@@ -181,7 +181,7 @@ function App() {
                 </div>
                 <h3 style={{ marginBottom: '1.5rem', fontSize: '1.6rem', color: 'var(--color-text-main)' }}>Delson Sabino</h3>
                 <p style={{ color: '#cbd5e1', lineHeight: '1.7', fontSize: '1.05rem' }}>
-                  Traz uma visão estratégica e completa do setor têxtil. Foram <strong>10 anos atuando diretamente na fabricação de uniformes personalizados</strong>, utilizando técnicas como serigrafia e sublimação no dia a dia da produção. Hoje, é CEO da Delson Bordado, uma fábrica especializada em prestação de serviços de bordado profissional, e também fundador do Instituto Profissional Criativo — uma escola voltada à formação de jovens e adultos para o mercado têxtil, gráfico e criativo.
+                  Foram <strong>10 anos atuando diretamente na fabricação de uniformes personalizados</strong>, utilizando técnicas como serigrafia e sublimação no dia a dia da produção. Traz uma visão estratégica e completa do setor têxtil. Hoje, é CEO da Delson Bordado, uma fábrica especializada em prestação de serviços de bordado profissional, é Cofundador e instrutor do Instituto Profissional Criativo — uma escola voltada à formação de jovens e adultos para o mercado têxtil, gráfico e criativo.
                 </p>
               </div>
             </AnimatedSection>
